@@ -4,6 +4,7 @@ permissions:
   contents: read
 jobs:
   test:
+    name: test (${{ matrix.tz }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
