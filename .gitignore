@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.auth/
+.worktrees/
+audit/
+data/
+!site/assets/data/
+coverage/
+node_modules/
+playwright-report/
+test-results/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
