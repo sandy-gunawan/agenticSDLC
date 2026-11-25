@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Issue triage dan CI fault analysis · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S13 / SKENARIO</p><h1>Issue triage dan CI fault analysis</h1><p class="lead">Cari label needs-info, komentar terbatas, dan penjelasan bahwa ECONNRESET berasal dari fixture.</p></header>
+
+<div class="chips"><span class="chip">Level 4</span><span class="chip">Yoga</span><span class="chip">Bima</span></div><p class="caption">Durasi 6 menit · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>30 issue/minggu, separuh tidak lengkap; Senin pagi habis untuk melabeli. Error &quot;ECONNRESET&quot; di CI sudah dianalisa 5 orang berbeda dari nol dalam 3 bulan.</p><aside class="callout"><strong>Kerugian</strong><p>Waktu senior habis untuk admin; pengetahuan troubleshooting hilang di chat.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P13 — issue tanpa label; error e2e berulang.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/.github/workflows/ci-fault-analysis.md"><code>.github/workflows/ci-fault-analysis.md</code></a></p><p>Issue tidak lengkap → Klarifikasi dan diagnosis terpisah</p></details></section>
+<section><h2>Pilihan solusi</h2><p>gh-aw <code>issue-triage.md</code> (<code>safe-outputs: add-labels, add-comment</code>) + <code>ci-fault-analysis.md</code> (trigger <code>workflow_run</code> failed → komentar akar masalah).</p>
+<figure class="diagram">
+<img src="../assets/diagrams/D10.svg" alt="Event memicu output yang dibatasi; rincian tersedia pada uraian diagram." width="642" height="343" loading="lazy">
+<figcaption><span class="eyebrow">D10</span> Event memicu output yang dibatasi · <a href="../assets/diagrams/D10.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Push atau jadwal</strong> → memicu → <strong>Docs sync</strong></li><li><strong>Issue baru</strong> → memicu → <strong>Issue triage</strong></li><li><strong>Run CI demo gagal</strong> → memicu → <strong>CI fault analysis</strong></li><li><strong>Docs sync</strong> → meminta draft PR via → <strong>Safe outputs</strong></li><li><strong>Issue triage</strong> → meminta label dan komentar via → <strong>Safe outputs</strong></li><li><strong>CI fault analysis</strong> → meminta ringkasan via → <strong>Safe outputs</strong></li></ol></details>
+</figure></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/14">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>Buka issue latihan dengan judul “Aplikasi error”.</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Cari label needs-info, komentar terbatas, dan penjelasan bahwa ECONNRESET berasal dari fixture.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S13.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> Issue tidak lengkap</figcaption>
+<p class="pending">Belum di-capture · <code>S13-before.png</code></p>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> Klarifikasi dan diagnosis terpisah</figcaption>
+<p class="pending">Belum di-capture · <code>S13-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>Issue tidak lengkap</dd></div><div><dt>Target setelah latihan</dt><dd>Klarifikasi dan diagnosis terpisah</dd></div><div><dt>Verifikasi</dt><dd>Cari label needs-info, komentar terbatas, dan penjelasan bahwa ECONNRESET berasal dari fixture.</dd></div></dl>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Maintainer langsung ke issue yang siap; pengetahuan troubleshooting terakumulasi di PR/issue.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/14">Issue GitHub · S13</a></li>
+<li><code>S13-01-triage.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S12.html">← S12</a><a href="../capstone.html">Capstone</a><a href="S14.html">S14 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

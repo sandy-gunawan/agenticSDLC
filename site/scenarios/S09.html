@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Virtual Review Board · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S09 / SKENARIO</p><h1>Virtual Review Board</h1><p class="lead">Cari tambahan query per klaim. Periksa log dan audit; jangan mengarang temuan.</p></header>
+
+<div class="chips"><span class="chip">Level 3</span><span class="chip">Sari</span><span class="chip">Dimas</span><span class="chip">Bima</span></div><p class="caption">Durasi 10 menit · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>QA 2 orang untuk 15 dev hanya sempat uji fungsional. Performa, security, compliance tidak tersentuh. Release menumpuk menunggu review.</p><aside class="callout"><strong>Kerugian</strong><p>Defect non-fungsional (lambat, bocor data, crash saat beban) baru ketemu di produksi; QA burnout.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P9 — N+1 query di list klaim + <code>console.log</code> objek user (PII).</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/docs/fixtures/S09-review-notes.md"><code>docs/fixtures/S09-review-notes.md</code></a></p><p>PR tanpa sudut pandang spesialis → Ringkasan risiko untuk Tech Lead</p></details></section>
+<section><h2>Pilihan solusi</h2><p><code>security-reviewer</code>, <code>perf-reviewer</code>, <code>compliance-reviewer</code> (read-only, output komentar PR dengan severity) + Copilot code review built-in. Manusia baca ringkasan, bukan semua baris.</p>
+<figure class="diagram">
+<img src="../assets/diagrams/D7.svg" alt="Tiga review berjalan paralel; rincian tersedia pada uraian diagram." width="762" height="324" loading="lazy">
+<figcaption><span class="eyebrow">D7</span> Tiga review berjalan paralel · <a href="../assets/diagrams/D7.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Draft PR</strong> → dibaca oleh → <strong>Security Reviewer</strong></li><li><strong>Draft PR</strong> → dibaca oleh → <strong>Performance Reviewer</strong></li><li><strong>Draft PR</strong> → dibaca oleh → <strong>Compliance Reviewer</strong></li><li><strong>Security Reviewer</strong> → menyampaikan temuan ke → <strong>Bima</strong></li><li><strong>Performance Reviewer</strong> → menyampaikan temuan ke → <strong>Bima</strong></li><li><strong>Compliance Reviewer</strong> → menyampaikan temuan ke → <strong>Bima</strong></li></ol></details>
+</figure></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/10">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>Review PR stok; beri lokasi, dampak, severity, dan mitigasi tanpa mengedit kode.</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Cari tambahan query per klaim. Periksa log dan audit; jangan mengarang temuan.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S09.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> PR tanpa sudut pandang spesialis</figcaption>
+<p class="pending">Belum di-capture · <code>S09-before.png</code></p>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> Ringkasan risiko untuk Tech Lead</figcaption>
+<p class="pending">Belum di-capture · <code>S09-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>PR tanpa sudut pandang spesialis</dd></div><div><dt>Target setelah latihan</dt><dd>Ringkasan risiko untuk Tech Lead</dd></div><div><dt>Verifikasi</dt><dd>Cari tambahan query per klaim. Periksa log dan audit; jangan mengarang temuan.</dd></div></dl>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Setiap PR direview dari beberapa dimensi secara paralel; reviewer manusia dapat ringkasan temuan.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/10">Issue GitHub · S09</a></li>
+<li><code>S09-01-three-sessions.png</code> · belum di-capture</li><li><code>S09-02-comments.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S08.html">← S08</a><a href="../capstone.html">Capstone</a><a href="S10.html">S10 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

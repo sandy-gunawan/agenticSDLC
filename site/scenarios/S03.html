@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Skill new-endpoint · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S03 / SKENARIO</p><h1>Skill new-endpoint</h1><p class="lead">Periksa bahwa skill dimuat dan kontrak API ikut diperbarui.</p></header>
+
+<div class="chips"><span class="chip">Level 1</span><span class="chip">Rani</span><span class="chip">Yoga</span></div><p class="caption">Durasi 6 menit · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>Tiap developer bikin endpoint dengan caranya sendiri: ada yang tanpa validasi, ada yang tanpa logging. DevOps susah monitoring.</p><aside class="callout"><strong>Kerugian</strong><p>Inkonsistensi antar endpoint; review lama; tribal knowledge hilang saat orang resign.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P3 — <code>reports.js</code> tanpa validasi &amp; logging, pola beda dari route lain.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/.github/skills/new-endpoint/SKILL.md"><code>.github/skills/new-endpoint/SKILL.md</code></a></p><p>Pola route berbeda → Route, service, test, dan docs seragam</p></details></section>
+<section><h2>Pilihan solusi</h2><p><code>.github/skills/new-endpoint/SKILL.md</code>: route → validasi → service → test → update docs.</p>
+<ol class="steps"><li><strong>Rani</strong> menyiapkan konteks.</li><li>Agent mengerjakan latihan S03.</li><li>Manusia memeriksa: Periksa bahwa skill dimuat dan kontrak API ikut diperbarui.</li></ol></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/3">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>Buat endpoint POST /claims/:id/comments memakai skill new-endpoint; pertahankan batas akses.</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Periksa bahwa skill dimuat dan kontrak API ikut diperbarui.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S03.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> Pola route berbeda</figcaption>
+<p class="pending">Belum di-capture · <code>S03-before.png</code></p>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> Route, service, test, dan docs seragam</figcaption>
+<p class="pending">Belum di-capture · <code>S03-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>Pola route berbeda</dd></div><div><dt>Target setelah latihan</dt><dd>Route, service, test, dan docs seragam</dd></div><div><dt>Verifikasi</dt><dd>Periksa bahwa skill dimuat dan kontrak API ikut diperbarui.</dd></div></dl>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Prosedur jadi aset tim yang reusable; hasil seragam tanpa prompt panjang.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/3">Issue GitHub · S03</a></li>
+<li><code>S03-01-skill-loaded.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S02.html">← S02</a><a href="../capstone.html">Capstone</a><a href="S04.html">S04 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

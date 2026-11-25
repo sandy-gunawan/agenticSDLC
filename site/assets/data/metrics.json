@@ -1,0 +1,25 @@
+{
+  "S04": {
+    "runs": []
+  },
+  "S08": {
+    "approvalCoverage": {
+      "before": 75,
+      "after": 100,
+      "unit": "% baris",
+      "source": "Vitest V8 · Asia/Jakarta · baseline vs demo/s08-qa-observation · kasus tepat Rp1.000.000 gagal seperti yang diharapkan."
+    }
+  },
+  "S10": {
+    "alertCounts": {
+      "before": null,
+      "after": null
+    }
+  },
+  "S14": {
+    "runs": []
+  },
+  "S15": {
+    "runs": []
+  }
+}

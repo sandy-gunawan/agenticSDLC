@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Siapa mengerjakan apa? · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="assets/workshop.css"><script defer src="assets/vendor/chart.umd.js"></script><script defer src="js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="index.html">Mulai</a><a href="scenarios/index.html">Skenario</a><a href="architecture.html" aria-current="page">Arsitektur</a><a href="setup.html">Cara Demo</a><a href="capstone.html">Capstone</a><a href="governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">WORKSHOP / AGENTIC SDLC</p><h1>Siapa mengerjakan apa?</h1><p class="lead">Pisahkan request aplikasi, pipeline GitHub, dan keputusan manusia.</p></header>
+
+<section><h2>Satu request: Taksi bandara</h2><figure class="diagram">
+<img src="assets/diagrams/D3.svg" alt="Dari browser ke SQLite dan kembali; rincian tersedia pada uraian diagram." width="822" height="362" loading="lazy">
+<figcaption><span class="eyebrow">D3</span> Dari browser ke SQLite dan kembali · <a href="assets/diagrams/D3.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Browser</strong> → mengirim POST /claims → <strong>Express API</strong></li><li><strong>Express API</strong> → memvalidasi dan menyimpan → <strong>SQLite</strong></li><li><strong>SQLite</strong> → mengembalikan klaim → <strong>Express API</strong></li><li><strong>Express API</strong> → membalas 201 atau error → <strong>Browser</strong></li><li><strong>GitHub Actions</strong> → menjalankan test di luar request → <strong>Express API</strong></li><li><strong>CodeQL</strong> → menganalisis kode tanpa request → <strong>Express API</strong></li></ol></details>
+</figure>
+<ol class="steps"><li>Browser mengirim judul Taksi bandara dan IDR 250.000 ke <code>POST /claims</code>, dengan ID akun latihan.</li><li>Express mengecek akses karyawan dan jumlah. Baseline mencatat hari UTC saat input. Pada hasil latihan S04, tanggal masa depan berhenti di API dengan HTTP 400 dan tidak mencapai SQLite.</li><li>Jika valid, SQLite menyimpan klaim <code>pending</code>. Browser membaca tampilan terbaru dan menampilkan bahwa klaim menunggu manager.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/docs/api.md">Kontrak API</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/src/server.js">Bootstrap Express</a></p></section>
+<section><h2>Alur agentic</h2><figure class="diagram">
+<img src="assets/diagrams/D4.svg" alt="Delegasi, artefak, dan keputusan manusia; rincian tersedia pada uraian diagram." width="485" height="708" loading="lazy">
+<figcaption><span class="eyebrow">D4</span> Delegasi, artefak, dan keputusan manusia · <a href="assets/diagrams/D4.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Issue / Jira</strong> → ditugaskan ke → <strong>Coding agent</strong></li><li><strong>Coding agent</strong> → membuat → <strong>Branch dan draft PR</strong></li><li><strong>Branch dan draft PR</strong> → memicu → <strong>CI dan CodeQL</strong></li><li><strong>Branch dan draft PR</strong> → dibaca oleh → <strong>Reviewer agents</strong></li><li><strong>CI dan CodeQL</strong> → memberi bukti ke → <strong>Tech Lead</strong></li><li><strong>Reviewer agents</strong> → memberi saran ke → <strong>Tech Lead</strong></li><li><strong>Tech Lead</strong> → memilih merge sebelum → <strong>Docs sync</strong></li><li><strong>Hooks</strong> → mencatat metadata ke → <strong>Audit</strong></li></ol></details>
+</figure><p>CI dan CodeQL berjalan terpisah dari lalu lintas aplikasi. Billing dan audit juga bukan bagian dari transaksi SQLite.</p></section>
+<section><h2>Peta file .github/</h2><figure class="diagram">
+<img src="assets/diagrams/D5.svg" alt="Peta konfigurasi repo; rincian tersedia pada uraian diagram." width="1225" height="215" loading="lazy">
+<figcaption><span class="eyebrow">D5</span> Peta konfigurasi repo · <a href="assets/diagrams/D5.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Copilot cloud atau IDE</strong> → membaca → <strong>Instructions dan AGENTS.md</strong></li><li><strong>Custom agents</strong> → memakai → <strong>File agents</strong></li><li><strong>Pembuat endpoint</strong> → memanggil → <strong>Skill new-endpoint</strong></li><li><strong>CLI atau cloud agent</strong> → menjalankan → <strong>Hooks</strong></li><li><strong>GitHub Actions</strong> → membaca → <strong>Workflow lock YAML</strong></li></ol></details>
+</figure><dl class="chart-data">
+<div><dt><code>copilot-instructions.md</code></dt><dd>Konvensi kode dan test.</dd></div><div><dt><code>agents/*.agent.md</code></dt><dd>Profil tujuh spesialis.</dd></div><div><dt><code>skills/new-endpoint/SKILL.md</code></dt><dd>Prosedur menambah endpoint.</dd></div><div><dt><code>hooks/guardrails.json</code></dt><dd>Contoh allow/deny dan audit metadata.</dd></div><div><dt><code>workflows/ci.yml</code></dt><dd>Lint, test dua timezone, dan browser.</dd></div><div><dt><code>workflows/copilot-setup-steps.yml</code></dt><dd>Persiapan runner coding agent.</dd></div><div><dt><code>workflows/*.lock.yml</code></dt><dd>Workflow AI yang sudah dikompilasi.</dd></div><div><dt><code>workflows/pages.yml</code></dt><dd>Publikasi situs statis, bukan server Express.</dd></div></dl></section>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

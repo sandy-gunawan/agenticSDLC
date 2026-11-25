@@ -1,0 +1,19 @@
+flowchart TB
+  N0["Plan · S11"]:::file
+  N1["Build · S02"]:::file
+  N2["Test · S08"]:::file
+  N3["Review · S09"]:::file
+  N4["Security · S10"]:::gate
+  N5["Deploy · S15"]:::file
+  N6["Operate · S12/13"]:::file
+  N0 -->|"memandu"| N1
+  N1 -->|"memicu"| N2
+  N2 -->|"melaporkan ke"| N3
+  N3 -->|"meminta"| N4
+  N4 -->|"memberi bukti untuk"| N5
+  N5 -->|"menyediakan dasar untuk"| N6
+  N6 -->|"membawa masukan ke"| N0
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

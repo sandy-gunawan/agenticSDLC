@@ -19,7 +19,8 @@
     "shots:login": "node scripts/screenshots.mjs login",
     "metrics": "node scripts/metrics.mjs",
     "reset": "node scripts/demo.mjs reset",
-    "docs:build": "node scripts/build-site.mjs"
+    "docs:build": "node scripts/build-site.mjs",
+    "docs:test": "node scripts/test-site.mjs"
   },
   "dependencies": {
     "better-sqlite3": "12.10.0",

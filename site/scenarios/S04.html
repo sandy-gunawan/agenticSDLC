@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Issue → Copilot → draft PR · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S04 / SKENARIO</p><h1>Issue → Copilot → draft PR</h1><p class="lead">Gunakan judul Taksi bandara dan IDR 250.000. Pada versi bertanggal, masukkan tanggal besok dan periksa pesan dari API.</p></header>
+
+<div class="chips"><span class="chip">Level 2</span><span class="chip">Hendra</span><span class="chip">Bima</span></div><p class="caption">Durasi 12 menit + waktu tunggu · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>Backlog ada 40 chore (validasi, dependency, pesan error). Selalu ditunda karena sprint penuh fitur. Audit menemukan dependency ber-CVE berumur 8 bulan.</p><aside class="callout"><strong>Kerugian</strong><p>Hutang teknis &amp; risiko security menumpuk diam-diam; saat dikerjakan biayanya jauh lebih besar.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P4 — issue &quot;Tambah <code>claimDate</code> + validasi tidak boleh masa depan&quot; dengan acceptance criteria.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S04.md"><code>issues/S04.md</code></a></p><p>Form belum punya tanggal → Tanggal masa depan ditolak</p></details></section>
+<section><h2>Pilihan solusi</h2><p>Assign issue ke Copilot → agent kerja di background → jalankan test → draft PR dengan penjelasan → manusia review, minta revisi via komentar, agent revisi.</p>
+<figure class="diagram">
+<img src="../assets/diagrams/D6.svg" alt="Perjalanan issue S04; rincian tersedia pada uraian diagram." width="882" height="479" loading="lazy">
+<figcaption><span class="eyebrow">D6</span> Perjalanan issue S04 · <a href="../assets/diagrams/D6.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Bima</strong> → menulis kriteria di → <strong>Issue</strong></li><li><strong>Issue</strong> → ditugaskan ke → <strong>Copilot</strong></li><li><strong>Copilot</strong> → menjalankan test di → <strong>Runner</strong></li><li><strong>Runner</strong> → mengembalikan hasil ke → <strong>Copilot</strong></li><li><strong>Copilot</strong> → membuka → <strong>Draft PR</strong></li><li><strong>Bima</strong> → meminta revisi di → <strong>Draft PR</strong></li><li><strong>Copilot</strong> → mendorong revisi ke → <strong>Draft PR</strong></li></ol></details>
+</figure></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/4">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>npm run shots -- S04</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Gunakan judul Taksi bandara dan IDR 250.000. Pada versi bertanggal, masukkan tanggal besok dan periksa pesan dari API.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S04.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="compare" data-compare><div class="planes"><img src="../assets/screenshots/S04-before.png" alt="" width="1440" height="957" loading="lazy"><img class="after-plane" src="../assets/screenshots/S04-after.png" alt="" width="1440" height="1035" loading="lazy"></div>
+<div class="slider-controls" hidden><label for="mix">Geser tampilan Before → After</label><input id="mix" type="range" min="0" max="100" value="50" aria-describedby="compare-text"></div></div><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> Form belum punya tanggal</figcaption>
+<a class="zoom" href="../assets/screenshots/S04-before.png"><img src="../assets/screenshots/S04-before.png" alt="Before: Form belum punya tanggal" width="1440" height="957" loading="lazy"></a>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> Tanggal masa depan ditolak</figcaption>
+<a class="zoom" href="../assets/screenshots/S04-after.png"><img src="../assets/screenshots/S04-after.png" alt="After: Tanggal masa depan ditolak" width="1440" height="1035" loading="lazy"></a>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>Form belum punya tanggal</dd></div><div><dt>Target setelah latihan</dt><dd>Tanggal masa depan ditolak</dd></div><div><dt>Verifikasi</dt><dd>Gunakan judul Taksi bandara dan IDR 250.000. Pada versi bertanggal, masukkan tanggal besok dan periksa pesan dari API.</dd></div></dl><figure class="evidence"><a class="zoom" href="../assets/screenshots/S04-after-annotated.png"><img src="../assets/screenshots/S04-after-annotated.png" alt="Sorotan 1: API menolak tanggal klaim masa depan." width="1440" height="1035" loading="lazy"></a><p class="caption">1. Perhatikan pesan di atas form. Kotak dan nomor menandai hasil dari API.</p></figure>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Chore dikerjakan tanpa mengganggu senior; hasil masuk sebagai PR yang sudah lolos test; kapasitas senior kembali ke pekerjaan bernilai tinggi.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/4">Issue GitHub · S04</a></li>
+<li><a class="zoom" href="../assets/screenshots/S04-01-issue.png">S04-01-issue.png</a></li><li><code>S04-02-assigned.png</code> · belum di-capture</li><li><code>S04-03-agent-session.png</code> · belum di-capture</li><li><code>S04-04-pr-summary.png</code> · belum di-capture</li><li><code>S04-05-pr-files.png</code> · belum di-capture</li><li><code>S04-06-pr-checks.png</code> · belum di-capture</li><li><code>S04-07-revision.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot aplikasi adalah perbandingan dua branch lokal, bukan bukti output dari Copilot cloud.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S03.html">← S03</a><a href="../capstone.html">Capstone</a><a href="S05.html">S05 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

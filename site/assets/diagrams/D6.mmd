@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant N0 as Bima
+  participant N1 as Issue
+  participant N2 as Copilot
+  participant N3 as Runner
+  participant N4 as Draft PR
+  N0->>N1: menulis kriteria di
+  N1->>N2: ditugaskan ke
+  N2->>N3: menjalankan test di
+  N3-->>N2: mengembalikan hasil ke
+  N2->>N4: membuka
+  N0->>N4: meminta revisi di
+  N2->>N4: mendorong revisi ke

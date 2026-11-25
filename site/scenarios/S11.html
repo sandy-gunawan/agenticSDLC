@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Virtual Architect · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S11 / SKENARIO</p><h1>Virtual Architect</h1><p class="lead">Bima harus menyetujui ADR sebelum handoff ke Implementer.</p></header>
+
+<div class="chips"><span class="chip">Level 3</span><span class="chip">Rani</span><span class="chip">Bima</span></div><p class="caption">Durasi 12 menit · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>Rani langsung coding fitur approval bertingkat tanpa desain. Saat review minggu kedua, Bima baru lihat logika retry bisa menyebabkan approval ganda.</p><aside class="callout"><strong>Kerugian</strong><p>Rework satu sprint; kasus terburuk bug finansial masuk produksi.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P11 — epik &quot;Approval bertingkat (&gt;1 jt perlu 2 approver)&quot; tanpa desain.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S11.md"><code>issues/S11.md</code></a></p><p>Epik tanpa keputusan desain → ADR disetujui sebelum coding</p></details></section>
+<section><h2>Pilihan solusi</h2><p>Agent <code>architect</code> menulis ADR + task breakdown → Tech Lead approve via komentar → <code>implementer</code> → handoff ke <code>security-reviewer</code>.</p>
+<figure class="diagram">
+<img src="../assets/diagrams/D9.svg" alt="Setujui desain sebelum implementasi; rincian tersedia pada uraian diagram." width="208" height="580" loading="lazy">
+<figcaption><span class="eyebrow">D9</span> Setujui desain sebelum implementasi · <a href="../assets/diagrams/D9.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Architect</strong> → menulis → <strong>ADR</strong></li><li><strong>ADR</strong> → ditinjau oleh → <strong>Tech Lead</strong></li><li><strong>Tech Lead</strong> → menyetujui sebelum → <strong>Implementer</strong></li><li><strong>Implementer</strong> → meminta review dari → <strong>Security Reviewer</strong></li></ol></details>
+</figure></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/12">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>Tulis ADR approval bertingkat, termasuk retry dan transaksi. Jangan menulis kode.</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Bima harus menyetujui ADR sebelum handoff ke Implementer.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S11.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> Epik tanpa keputusan desain</figcaption>
+<p class="pending">Belum di-capture · <code>S11-before.png</code></p>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> ADR disetujui sebelum coding</figcaption>
+<p class="pending">Belum di-capture · <code>S11-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>Epik tanpa keputusan desain</dd></div><div><dt>Target setelah latihan</dt><dd>ADR disetujui sebelum coding</dd></div><div><dt>Verifikasi</dt><dd>Bima harus menyetujui ADR sebelum handoff ke Implementer.</dd></div></dl>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Desain jadi tahapan eksplisit; masalah ditangkap sebelum kode; dokumentasi desain terbentuk otomatis.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/12">Issue GitHub · S11</a></li>
+<li><code>S11-01-adr-pr.png</code> · belum di-capture</li><li><code>S11-02-impl-pr.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S10.html">← S10</a><a href="../capstone.html">Capstone</a><a href="S12.html">S12 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

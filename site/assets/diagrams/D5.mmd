@@ -1,0 +1,20 @@
+flowchart TB
+  N0["Copilot cloud atau IDE"]:::agent
+  N1["Instructions dan AGENTS.md"]:::agent
+  N2["Custom agents"]:::agent
+  N3["File agents"]:::agent
+  N4["Pembuat endpoint"]:::file
+  N5["Skill new-endpoint"]:::file
+  N6["CLI atau cloud agent"]:::agent
+  N7["Hooks"]:::gate
+  N8["GitHub Actions"]:::file
+  N9["Workflow lock YAML"]:::file
+  N0 -->|"membaca"| N1
+  N2 -->|"memakai"| N3
+  N4 -->|"memanggil"| N5
+  N6 -->|"menjalankan"| N7
+  N8 -->|"membaca"| N9
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

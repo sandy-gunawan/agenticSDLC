@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Jaga izin, audit, dan biaya · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="assets/workshop.css"><script defer src="assets/vendor/chart.umd.js"></script><script defer src="js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="index.html">Mulai</a><a href="scenarios/index.html">Skenario</a><a href="architecture.html">Arsitektur</a><a href="setup.html">Cara Demo</a><a href="capstone.html">Capstone</a><a href="governance.html" aria-current="page">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">WORKSHOP / AGENTIC SDLC</p><h1>Jaga izin, audit, dan biaya</h1><p class="lead">Kontrol bukan hanya instruksi di prompt. Gunakan izin minimum dan tunjukkan siapa yang dapat menyetujui perubahan.</p></header>
+
+<figure class="diagram">
+<img src="assets/diagrams/D11.svg" alt="Hook menilai tindakan, platform mengatur izin; rincian tersedia pada uraian diagram." width="732" height="324" loading="lazy">
+<figcaption><span class="eyebrow">D11</span> Hook menilai tindakan, platform mengatur izin · <a href="assets/diagrams/D11.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Tool call</strong> → masuk ke → <strong>Hook preToolUse</strong></li><li><strong>Hook preToolUse</strong> → mengizinkan bila aman → <strong>Tool</strong></li><li><strong>Hook preToolUse</strong> → menolak contoh spesifik → <strong>Deny</strong></li><li><strong>Hook preToolUse</strong> → mencatat metadata ke → <strong>Audit log</strong></li><li><strong>Izin platform</strong> → membatasi → <strong>Tool</strong></li></ol></details>
+</figure>
+<section class="panel"><h2>Buktikan keputusan, bukan isi rahasia</h2><p>Fixture <code>WORKSHOP_DEMO_BLOCK</code> menguji penolakan. Periksa <code>audit/tools.log</code>: keputusan, waktu, dan jenis tool. Hook latihan tidak menggantikan sandbox atau aturan organisasi.</p><div class="command"><pre><code>npm test -- tests/unit/guard.test.js</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<section><h2>Contoh biaya yang bisa dicek</h2><p><strong>Ilustrasi:</strong> 3 run docs-sync × batas konfigurasi 2 AI credits per run = batas rencana 6 AI credits. Ini bukan pengukuran pemakaian atau konversi ke rupiah. Harga bergantung paket dan billing akun; tarif dalam mata uang akun belum diverifikasi.</p>
+<p class="caption">Sumber angka ilustrasi: <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/.github/workflows/docs-sync.md">batas di konfigurasi</a>. Referensi tarif dan satuan: <a href="https://docs.github.com/en/billing/concepts/product-billing/github-copilot">GitHub Copilot billing</a>. Catatan workshop: November 2026.</p>
+<figure class="chart"><figcaption><span class="eyebrow">C6</span> AI credits per dry-run</figcaption>
+<p class="pending">Data belum tersedia. Belum ada nilai untuk diplot.</p>
+<dl class="chart-data"><div><dt>S04</dt><dd>Belum diukur</dd></div><div><dt>S14</dt><dd>Belum diukur</dd></div><div><dt>S15</dt><dd>Belum diukur</dd></div></dl>
+<p class="caption">Catat angka dari dashboard yang berizin. Data yang tidak ada bukan nol.</p></figure></section>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

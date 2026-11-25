@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Pulihkan CI merah · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S05 / SKENARIO</p><h1>Pulihkan CI merah</h1><p class="lead">Gunakan Asia/Jakarta dan America/Los_Angeles. Cocokkan kontrak tanggal dengan UTC.</p></header>
+
+<div class="chips"><span class="chip">Level 2</span><span class="chip">Rani</span><span class="chip">Bima</span><span class="chip">Yoga</span></div><p class="caption">Durasi 8 menit · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>Pipeline merah jam 4 sore. Rani buka log 3.000 baris, tidak paham, tanya Bima yang sedang meeting. Besok pagi baru ketemu: test flaky karena timezone.</p><aside class="callout"><strong>Kerugian</strong><p>Deployment tertunda sehari; dua orang terganggu untuk satu masalah; pipeline merah lama-lama diabaikan.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P5 — test pakai <code>new Date()</code> tanpa fixed clock; CI matrix dengan <code>TZ</code> berbeda memastikan merah.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/tests/unit/clock-demo.test.js"><code>tests/unit/clock-demo.test.js</code></a></p><p>LA gagal, Jakarta lulus → Kedua zona waktu lulus</p></details></section>
+<section><h2>Pilihan solusi</h2><p>Dari failing run → agent analisa log → PR fix (<code>vi.setSystemTime</code>).</p>
+<ol class="steps"><li><strong>Rani</strong> menyiapkan konteks.</li><li>Agent mengerjakan latihan S05.</li><li>Manusia memeriksa: Gunakan Asia/Jakarta dan America/Los_Angeles. Cocokkan kontrak tanggal dengan UTC.</li></ol></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/5">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>npm test -- tests/unit/clock-demo.test.js</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Gunakan Asia/Jakarta dan America/Los_Angeles. Cocokkan kontrak tanggal dengan UTC.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S05.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> LA gagal, Jakarta lulus</figcaption>
+<p class="pending">Belum di-capture · <code>S05-before.png</code></p>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> Kedua zona waktu lulus</figcaption>
+<p class="pending">Belum di-capture · <code>S05-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>LA gagal, Jakarta lulus</dd></div><div><dt>Target setelah latihan</dt><dd>Kedua zona waktu lulus</dd></div><div><dt>Verifikasi</dt><dd>Gunakan Asia/Jakarta dan America/Los_Angeles. Cocokkan kontrak tanggal dengan UTC.</dd></div></dl>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Waktu pulih pipeline turun dari sehari ke menit; developer bukan lagi &quot;tukang baca log&quot;.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/5">Issue GitHub · S05</a></li>
+<li><code>S05-01-issue.png</code> · belum di-capture</li><li><code>S05-02-pr-fix.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S04.html">← S04</a><a href="../capstone.html">Capstone</a><a href="S06.html">S06 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

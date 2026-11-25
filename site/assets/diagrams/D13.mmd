@@ -1,0 +1,13 @@
+flowchart TB
+  N0["Personal atau organisasi?"]:::human
+  N1["S01–S15 dengan fallback lokal"]:::file
+  N2["Tambahkan Jira / Teams dan kebijakan"]:::file
+  N3["Organisasi private"]:::file
+  N4["Code scanning dan Copilot"]:::agent
+  N0 -->|"personal public"| N1
+  N0 -->|"organisasi berizin"| N2
+  N3 -->|"cek lisensi sebelum"| N4
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

@@ -1,0 +1,20 @@
+flowchart TB
+  N0["1. Bagi epik menjadi tugas"]:::file
+  N1["2. Setujui desain"]:::file
+  N2["3. Implementasikan di branch"]:::file
+  N3["4. Periksa CI"]:::gate
+  N4["5. Review perubahan"]:::file
+  N5["6. Ambil keputusan merge"]:::file
+  N6["7. Sinkronkan docs"]:::file
+  N7["8. Periksa audit"]:::file
+  N0 -->|"meneruskan ke"| N1
+  N1 -->|"meneruskan ke"| N2
+  N2 -->|"meneruskan ke"| N3
+  N3 -->|"meneruskan ke"| N4
+  N4 -->|"meneruskan ke"| N5
+  N5 -->|"meneruskan ke"| N6
+  N6 -->|"meneruskan ke"| N7
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

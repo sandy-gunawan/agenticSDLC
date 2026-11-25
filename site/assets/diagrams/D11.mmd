@@ -1,0 +1,16 @@
+flowchart TB
+  N0["Tool call"]:::file
+  N1["Hook preToolUse"]:::gate
+  N2["Tool"]:::file
+  N3["Deny"]:::gate
+  N4["Audit log"]:::file
+  N5["Izin platform"]:::gate
+  N0 -->|"masuk ke"| N1
+  N1 -->|"mengizinkan bila aman"| N2
+  N1 -->|"menolak contoh spesifik"| N3
+  N1 -->|"mencatat metadata ke"| N4
+  N5 -->|"membatasi"| N2
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

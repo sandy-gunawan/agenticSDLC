@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>CodeQL dan mitigasi · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S10 / SKENARIO</p><h1>CodeQL dan mitigasi</h1><p class="lead">Gunakan fixture bila tidak ada alert hidup. Jangan menyebut pemindaian sebagai autofix.</p></header>
+
+<div class="chips"><span class="chip">Level 3</span><span class="chip">Dimas</span><span class="chip">Bima</span></div><p class="caption">Durasi 8 menit · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>Code scanning menemukan 600 alert. Dikirim sebagai spreadsheet ke dev. Dev: &quot;tidak ada waktu&quot;. AppSec: &quot;wajib untuk audit&quot;. Enam bulan kemudian masih 550.</p><aside class="callout"><strong>Kerugian</strong><p>Temuan audit/regulator berulang; risiko breach; hubungan dev–security memburuk.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P10 — fixture laporan temuan berlabel ilustrasi. Kode berjalan tidak sengaja dilemahkan dan tidak memasang paket ber-CVE sebagai target latihan.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/docs/fixtures/S10-code-scanning.md"><code>docs/fixtures/S10-code-scanning.md</code></a></p><p>Tinjau hasil scan → Mitigasi terverifikasi bila ada alert</p></details></section>
+<section><h2>Pilihan solusi</h2><p>Alert code scanning → assign ke Copilot → agent perbaiki → jalankan ulang CodeQL untuk validasi → draft PR (bisa hingga 25 alert dalam satu PR).</p>
+<figure class="diagram">
+<img src="../assets/diagrams/D8.svg" alt="Jalur defensif bila ada alert nyata; rincian tersedia pada uraian diagram." width="882" height="452" loading="lazy">
+<figcaption><span class="eyebrow">D8</span> Jalur defensif bila ada alert nyata · <a href="../assets/diagrams/D8.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>CodeQL</strong> → melaporkan → <strong>Alert</strong></li><li><strong>Dimas</strong> → memilih alert yang disetujui di → <strong>Alert</strong></li><li><strong>Dimas</strong> → minta draf mitigasi ke → <strong>Copilot</strong></li><li><strong>Copilot</strong> → mengajukan mitigasi ke → <strong>Draft PR</strong></li><li><strong>CodeQL</strong> → memeriksa ulang → <strong>Draft PR</strong></li><li><strong>Dimas</strong> → memverifikasi status → <strong>Alert</strong></li></ol></details>
+</figure></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/11">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>gh api repos/sandy-gunawan/agenticSDLC/code-scanning/default-setup</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Gunakan fixture bila tidak ada alert hidup. Jangan menyebut pemindaian sebagai autofix.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S10.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> Tinjau hasil scan</figcaption>
+<p class="pending">Belum di-capture · <code>S10-before.png</code></p>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> Mitigasi terverifikasi bila ada alert</figcaption>
+<p class="pending">Belum di-capture · <code>S10-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>Tinjau hasil scan</dd></div><div><dt>Target setelah latihan</dt><dd>Mitigasi terverifikasi bila ada alert</dd></div><div><dt>Verifikasi</dt><dd>Gunakan fixture bila tidak ada alert hidup. Jangan menyebut pemindaian sebagai autofix.</dd></div></dl>
+
+<figure class="chart"><figcaption><span class="eyebrow">C4</span> Alert terbuka sebelum dan sesudah</figcaption>
+<p class="pending">Data belum tersedia. Belum ada nilai untuk diplot.</p>
+<dl class="chart-data"><div><dt>Before</dt><dd>Belum diukur</dd></div><div><dt>After</dt><dd>Belum diukur</dd></div></dl>
+<p class="caption">Fixture keamanan bukan alert dan tidak masuk hitungan.</p></figure></section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Backlog security turun drastis tanpa menambah beban dev; AppSec jadi reviewer, bukan pengejar.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/11">Issue GitHub · S10</a></li>
+<li><code>S10-01-assign.png</code> · belum di-capture</li><li><code>S10-02-pr-autofix.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S09.html">← S09</a><a href="../capstone.html">Capstone</a><a href="S11.html">S11 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

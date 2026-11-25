@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant N0 as CodeQL
+  participant N1 as Alert
+  participant N2 as Dimas
+  participant N3 as Copilot
+  participant N4 as Draft PR
+  N0->>N1: melaporkan
+  N2->>N1: memilih alert yang disetujui di
+  N2->>N3: minta draf mitigasi ke
+  N3->>N4: mengajukan mitigasi ke
+  N0->>N4: memeriksa ulang
+  N2->>N1: memverifikasi status

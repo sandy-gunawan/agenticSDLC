@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Guardrails, audit, dan biaya · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S14 / SKENARIO</p><h1>Guardrails, audit, dan biaya</h1><p class="lead">Bandingkan keputusan allow dan deny di audit/tools.log. Dashboard enterprise perlu izin organisasi.</p></header>
+
+<div class="chips"><span class="chip">Level 5</span><span class="chip">Ibu Maya</span><span class="chip">Hendra</span><span class="chip">Yoga</span><span class="chip gate">Sebagian butuh org</span></div><p class="caption">Durasi 8 menit · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>Dev ingin pakai agent otomatis. CISO menolak: &quot;Bagaimana kalau agent push ke main atau baca secret?&quot; Tidak ada jawaban konkret, pilot dibatalkan. Di tempat lain, tagihan AI credit naik 3× karena workflow agent jalan tiap commit tanpa pemilik.</p><aside class="callout"><strong>Kerugian</strong><p>Organisasi tertinggal; shadow AI; biaya tak terkendali; temuan kepatuhan; program dihentikan manajemen.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P14 — tidak ada hooks; agent bisa jalankan apa saja.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/.github/hooks/guardrails.json"><code>.github/hooks/guardrails.json</code></a></p><p>Sinyal uji masuk → Keputusan deny tanpa bocor argumen</p></details></section>
+<section><h2>Pilihan solusi</h2><p><code>.github/hooks/guardrails.json</code> (blok <code>rm -rf</code>, <code>curl | sh</code>, akses <code>.env</code>; log tiap tool call), safe-outputs &amp; permissions minimal di gh-aw, enterprise policy, usage/credits dashboard.</p>
+<figure class="diagram">
+<img src="../assets/diagrams/D11.svg" alt="Hook menilai tindakan, platform mengatur izin; rincian tersedia pada uraian diagram." width="732" height="324" loading="lazy">
+<figcaption><span class="eyebrow">D11</span> Hook menilai tindakan, platform mengatur izin · <a href="../assets/diagrams/D11.mmd">Sumber Mermaid</a></figcaption>
+
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>Tool call</strong> → masuk ke → <strong>Hook preToolUse</strong></li><li><strong>Hook preToolUse</strong> → mengizinkan bila aman → <strong>Tool</strong></li><li><strong>Hook preToolUse</strong> → menolak contoh spesifik → <strong>Deny</strong></li><li><strong>Hook preToolUse</strong> → mencatat metadata ke → <strong>Audit log</strong></li><li><strong>Izin platform</strong> → membatasi → <strong>Tool</strong></li></ol></details>
+</figure></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/15">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>npm test -- tests/unit/guard.test.js</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Bandingkan keputusan allow dan deny di audit/tools.log. Dashboard enterprise perlu izin organisasi.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S14.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> Sinyal uji masuk</figcaption>
+<p class="pending">Belum di-capture · <code>S14-before.png</code></p>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> Keputusan deny tanpa bocor argumen</figcaption>
+<p class="pending">Belum di-capture · <code>S14-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>Sinyal uji masuk</dd></div><div><dt>Target setelah latihan</dt><dd>Keputusan deny tanpa bocor argumen</dd></div><div><dt>Verifikasi</dt><dd>Bandingkan keputusan allow dan deny di audit/tools.log. Dashboard enterprise perlu izin organisasi.</dd></div></dl>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Tim bisa menunjukkan kontrol konkret ke CISO; biaya terpantau; adopsi aman secara kepatuhan dan finansial.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/15">Issue GitHub · S14</a></li>
+<li><code>S14-01-hooks-file.png</code> · belum di-capture</li><li><code>S14-02-usage.png</code> · belum di-capture</li><li><code>S14-03-gh-aw-permissions.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S13.html">← S13</a><a href="../capstone.html">Capstone</a><a href="S15.html">S15 →</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

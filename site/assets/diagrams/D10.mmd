@@ -1,0 +1,18 @@
+flowchart TB
+  N0["Push atau jadwal"]:::file
+  N1["Docs sync"]:::agent
+  N2["Issue baru"]:::file
+  N3["Issue triage"]:::agent
+  N4["Run CI demo gagal"]:::gate
+  N5["CI fault analysis"]:::agent
+  N6["Safe outputs"]:::gate
+  N0 -->|"memicu"| N1
+  N2 -->|"memicu"| N3
+  N4 -->|"memicu"| N5
+  N1 -->|"meminta draft PR via"| N6
+  N3 -->|"meminta label dan komentar via"| N6
+  N5 -->|"meminta ringkasan via"| N6
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

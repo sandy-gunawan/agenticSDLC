@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#101827" media="(prefers-color-scheme: dark)"><title>Capstone multi-currency · Workshop Agentic SDLC</title>
+<link rel="stylesheet" href="../assets/workshop.css"><script defer src="../assets/vendor/chart.umd.js"></script><script defer src="../js/app.js"></script></head>
+<body><a class="skip" href="#konten">Lompat ke konten</a>
+<header class="top"><div class="top-inner"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">A</span> Agentic SDLC</a>
+<nav aria-label="Halaman workshop"><a href="../index.html">Mulai</a><a href="../scenarios/index.html" aria-current="page">Skenario</a><a href="../architecture.html">Arsitektur</a><a href="../setup.html">Cara Demo</a><a href="../capstone.html">Capstone</a><a href="../governance.html">Kontrol</a></nav></div></header>
+<main id="konten" tabindex="-1"><header class="intro"><p class="eyebrow">S15 / SKENARIO</p><h1>Capstone multi-currency</h1><p class="lead">Jalankan di repo turunan. Bedakan hasil demo UI dari CI, review, serta merge nyata.</p></header>
+
+<div class="chips"><span class="chip">Level 5</span><span class="chip">Lina</span><span class="chip">Hendra</span><span class="chip">Rani</span><span class="chip">Bima</span><span class="chip">Sari</span><span class="chip">Dimas</span><span class="chip">Yoga</span><span class="chip">Ibu Maya</span></div><p class="caption">Durasi 25–30 menit, atau 10 menit versi eksekutif · estimasi latihan</p>
+<fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
+<section data-audience="business"><h2>Cerita tim</h2><p>Lina bawa epik &quot;dukung klaim dalam IDR/USD/SGD&quot;. Biasanya: Bima riset codebase seminggu, tulis 25 task larut malam, Rani coding tanpa desain, Sari review terlambat, Dimas menemukan alert setelah merge, docs tidak ter-update, partner komplain.</p><aside class="callout"><strong>Kerugian</strong><p>Lead time ide → produksi berbulan-bulan; kualitas tergantung satu orang; insiden setelah rilis.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P15 — epik multi-currency.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S15.md"><code>issues/S15.md</code></a></p><p>Klaim hanya IDR → IDR, USD, dan SGD dengan konversi</p></details></section>
+<section><h2>Pilihan solusi</h2><p></p>
+<figure class="diagram">
+<img src="../assets/diagrams/D12.svg" alt="Delapan tahap capstone; rincian tersedia pada uraian diagram." width="273" height="983" loading="lazy">
+<figcaption><span class="eyebrow">D12</span> Delapan tahap capstone · <a href="../assets/diagrams/D12.mmd">Sumber Mermaid</a></figcaption>
+<ol class="flow-track"><li data-timeline-node="1"><strong>1</strong> Bagi epik menjadi tugas</li><li data-timeline-node="2"><strong>2</strong> Setujui desain</li><li data-timeline-node="3"><strong>3</strong> Implementasikan di branch</li><li data-timeline-node="4"><strong>4</strong> Periksa CI</li><li data-timeline-node="5"><strong>5</strong> Review perubahan</li><li data-timeline-node="6"><strong>6</strong> Ambil keputusan merge</li><li data-timeline-node="7"><strong>7</strong> Sinkronkan docs</li><li data-timeline-node="8"><strong>8</strong> Periksa audit</li></ol>
+<details><summary>Baca alur sebagai teks</summary><ol class="steps"><li><strong>1. Bagi epik menjadi tugas</strong> → meneruskan ke → <strong>2. Setujui desain</strong></li><li><strong>2. Setujui desain</strong> → meneruskan ke → <strong>3. Implementasikan di branch</strong></li><li><strong>3. Implementasikan di branch</strong> → meneruskan ke → <strong>4. Periksa CI</strong></li><li><strong>4. Periksa CI</strong> → meneruskan ke → <strong>5. Review perubahan</strong></li><li><strong>5. Review perubahan</strong> → meneruskan ke → <strong>6. Ambil keputusan merge</strong></li><li><strong>6. Ambil keputusan merge</strong> → meneruskan ke → <strong>7. Sinkronkan docs</strong></li><li><strong>7. Sinkronkan docs</strong> → meneruskan ke → <strong>8. Periksa audit</strong></li></ol></details>
+</figure></section>
+<section data-audience="technical"><h2>Langkah demo</h2><ol class="steps"><li>Baca <a href="https://github.com/sandy-gunawan/agenticSDLC/issues/16">issue latihan</a> dan kriteria selesai.</li><li>Gunakan prompt atau perintah berikut.<span class="visually-hidden"> Prompt atau perintah</span><div class="command"><pre><code>Bahas ADR 0002, gunakan kurs latihan, uji rounding, dan serahkan merge kepada Tech Lead.</code></pre><button type="button" class="copy" hidden>Salin</button></div></li><li>Periksa hasil: Jalankan di repo turunan. Bedakan hasil demo UI dari CI, review, serta merge nyata.</li></ol>
+<p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/agentic-sdlc-workshop-docs/RUNBOOK.md">Runbook presenter</a> · <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/issues/S15.md">Template issue</a></p></section>
+<section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
+<figure class="evidence">
+<figcaption><span class="eyebrow">Before</span> Klaim hanya IDR</figcaption>
+<a class="zoom" href="../assets/screenshots/S15-before.png"><img src="../assets/screenshots/S15-before.png" alt="Before: Klaim hanya IDR" width="1440" height="957" loading="lazy"></a>
+</figure><figure class="evidence">
+<figcaption><span class="eyebrow">After</span> IDR, USD, dan SGD dengan konversi</figcaption>
+<p class="pending">Belum di-capture · <code>S15-after.png</code></p>
+</figure></div>
+<dl class="chart-data"><div><dt>Baseline</dt><dd>Klaim hanya IDR</dd></div><div><dt>Target setelah latihan</dt><dd>IDR, USD, dan SGD dengan konversi</dd></div><div><dt>Verifikasi</dt><dd>Jalankan di repo turunan. Bedakan hasil demo UI dari CI, review, serta merge nyata.</dd></div></dl>
+
+</section>
+<section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Dari ide ke fitur ter-merge dalam satu sesi, dengan semua gate kualitas, security, dan dokumentasi terlewati otomatis; manusia hanya di titik keputusan.</li></ul></section>
+<section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/16">Issue GitHub · S15</a></li>
+<li><code>S15-01-epic.png</code> · belum di-capture</li><li><code>S15-02-breakdown.png</code> · belum di-capture</li><li><code>S15-03-adr.png</code> · belum di-capture</li><li><code>S15-04-pr.png</code> · belum di-capture</li><li><code>S15-05-ci.png</code> · belum di-capture</li><li><code>S15-06-reviews.png</code> · belum di-capture</li><li><code>S15-07-merge.png</code> · belum di-capture</li><li><code>S15-08-docs.png</code> · belum di-capture</li><li><code>S15-09-audit.png</code> · belum di-capture</li></ul>
+<p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
+<section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
+<nav class="step-nav" aria-label="Skenario terkait"><a href="S14.html">← S14</a><a href="../capstone.html">Capstone</a></nav>
+</main><footer><div><a href="https://github.com/sandy-gunawan/agenticSDLC">Repo GitHub</a> <span>·</span> <a href="../glossary.html">Glosarium &amp; FAQ</a> <span>·</span> <a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/PROGRESS.md">Status verifikasi</a></div>
+<p>Contoh fiktif. Aplikasi hanya untuk latihan lokal; screenshot yang belum tersedia tidak dianggap bukti.</p></footer>
+<p class="visually-hidden" id="announcement" role="status"></p></body></html>

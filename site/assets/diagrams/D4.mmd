@@ -1,0 +1,22 @@
+flowchart TB
+  N0["Issue / Jira"]:::file
+  N1["Coding agent"]:::agent
+  N2["Branch dan draft PR"]:::file
+  N3["CI dan CodeQL"]:::gate
+  N4["Reviewer agents"]:::agent
+  N5["Tech Lead"]:::human
+  N6["Docs sync"]:::agent
+  N7["Hooks"]:::gate
+  N8["Audit"]:::file
+  N0 -->|"ditugaskan ke"| N1
+  N1 -->|"membuat"| N2
+  N2 -->|"memicu"| N3
+  N2 -->|"dibaca oleh"| N4
+  N3 -->|"memberi bukti ke"| N5
+  N4 -->|"memberi saran ke"| N5
+  N5 -->|"memilih merge sebelum"| N6
+  N7 -->|"mencatat metadata ke"| N8
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

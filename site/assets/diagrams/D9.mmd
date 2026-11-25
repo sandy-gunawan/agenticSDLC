@@ -1,0 +1,14 @@
+flowchart TB
+  N0["Architect"]:::agent
+  N1["ADR"]:::file
+  N2["Tech Lead"]:::human
+  N3["Implementer"]:::agent
+  N4["Security Reviewer"]:::agent
+  N0 -->|"menulis"| N1
+  N1 -->|"ditinjau oleh"| N2
+  N2 -->|"menyetujui sebelum"| N3
+  N3 -->|"meminta review dari"| N4
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b

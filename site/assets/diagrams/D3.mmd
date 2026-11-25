@@ -1,0 +1,16 @@
+flowchart TB
+  N0["Browser"]:::human
+  N1["Express API"]:::file
+  N2["SQLite"]:::file
+  N3["GitHub Actions"]:::file
+  N4["CodeQL"]:::gate
+  N0 -->|"mengirim POST /claims"| N1
+  N1 -->|"memvalidasi dan menyimpan"| N2
+  N2 -->|"mengembalikan klaim"| N1
+  N1 -->|"membalas 201 atau error"| N0
+  N3 -->|"menjalankan test di luar request"| N1
+  N4 -->|"menganalisis kode tanpa request"| N1
+  classDef human fill:#dbeafe,stroke:#1d4ed8,color:#172554
+  classDef agent fill:#f3e8ff,stroke:#7e22ce,color:#3b0764
+  classDef gate fill:#ffedd5,stroke:#c2410c,color:#431407
+  classDef file fill:#e2e8f0,stroke:#475569,color:#1e293b
