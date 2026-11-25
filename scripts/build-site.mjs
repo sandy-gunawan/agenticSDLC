@@ -126,8 +126,9 @@ ${scene.id === 'S08' ? chart('C3', 'Coverage approvalRules.js', ['Before', 'Afte
 ${scene.id === 'S10' ? chart('C4', 'Alert terbuka sebelum dan sesudah', ['Before', 'After'], [s10.before,s10.after], 'bar', 'alert', 'Fixture keamanan bukan alert dan tidak masuk hitungan.') : ''}</section>
 <section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>${inline(scene.narrative.advantage)}</li></ul></section>
 <section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="${scene.issue}">Issue GitHub · ${scene.id}</a></li>${scene.id === 'S07' ? `<li><a href="${url}/issues/8">Issue tahap migrasi</a></li>` : ''}
+${scene.evidence.map(({ label, href }) => `<li><a href="${esc(href)}">${esc(label)}</a></li>`).join('')}
 ${scene.shots.slice(2).map(({ name, present }) => `<li>${present ? `<a class="zoom" href="../assets/screenshots/${name}">${name}</a>` : `<code>${name}</code> · belum di-capture`}</li>`).join('')}</ul>
-<p class="caption">${['S02', 'S04', 'S06'].includes(scene.id) ? 'Screenshot aplikasi adalah perbandingan dua branch lokal, bukan bukti output dari Copilot cloud.' : 'Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.'}</p></section>
+<p class="caption">${scene.id === 'S04' ? 'Judul draft membuktikan PR terbuka, bukan perubahan kode. Screenshot aplikasi memakai branch pembanding lokal.' : ['S02', 'S06'].includes(scene.id) ? 'Screenshot aplikasi adalah perbandingan dua branch lokal, bukan bukti output dari Copilot cloud.' : 'Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.'}</p></section>
 <section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p>${cmd('npm run reset')}</section>
 <nav class="step-nav" aria-label="Skenario terkait">${previous ? `<a href="${previous.id}.html">← ${previous.id}</a>` : ''}<a href="../capstone.html">Capstone</a>${next ? `<a href="${next.id}.html">${next.id} →</a>` : ''}</nav>`, `${scene.id} / SKENARIO`);
 }

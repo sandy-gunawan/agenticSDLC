@@ -19,7 +19,6 @@
   "S04": [
     "S04-02-assigned.png",
     "S04-03-agent-session.png",
-    "S04-04-pr-summary.png",
     "S04-05-pr-files.png",
     "S04-06-pr-checks.png",
     "S04-07-revision.png"
@@ -41,11 +40,9 @@
     "S07-02-pr-migration.png"
   ],
   "S08": [
-    "S08-01-agent-picker.png",
-    "S08-02-bug-issue.png"
+    "S08-01-agent-picker.png"
   ],
   "S09": [
-    "S09-before.png",
     "S09-after.png",
     "S09-01-three-sessions.png",
     "S09-02-comments.png"

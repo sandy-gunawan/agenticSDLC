@@ -341,7 +341,7 @@ S04 — lihat CONTEXT.md.
 ## 11. Scripts (ringkasan kontrak; implementasi oleh agent)
 | File | Kontrak |
 |---|---|
-| `scripts/reset.sh` / `.ps1` | Konfirmasi interaktif; close semua PR open (`--delete-branch`); hapus remote branch `copilot/*`, `demo/pr-stock` dikecualikan; `git reset --hard v0-baseline` + `push --force-with-lease`; close issue open; jalankan `seed-issues.sh`; `git worktree prune` |
+| `scripts/reset.sh` / `.ps1` | Minta konfirmasi dan hapus hanya worktree latihan yang bersih. Tidak mengubah GitHub atau riwayat commit. |
 | `scripts/seed-issues.sh` | Lihat §9 |
 | `scripts/make-bare.sh` | Clone `full` → hapus `.github/agents`, `.github/skills`, `.github/hooks`, `.github/copilot-instructions.md`, `AGENTS.md`, `.github/workflows/*.md` + `*.lock.yml`, `site/`; commit; push ke repo `expense-app-bare`; set template |
 | `scripts/demo.sh before|after <branch>|compare <branch>|stop` | Worktree + port; `stop` kill by port 3000/3001 |
@@ -363,4 +363,4 @@ test-results/
 ```
 
 ## 13. Branch protection (jalankan sekali, `gh api`)
-Required: status check `test (Asia/Jakarta)`, `test (America/Los_Angeles)`, `CodeQL`; 1 approving review; dismiss stale reviews; tidak boleh force-push kecuali admin (dipakai `reset.sh`). Agent menulis perintah `gh api -X PUT repos/{owner}/{repo}/branches/main/protection ...` di `scripts/protect-main.sh`.
+Required: status checks `test (Asia/Jakarta)` dan `test (America/Los_Angeles)`, 1 approving review, dismiss stale reviews, dan larangan force-push termasuk admin. Aturan CodeQL diatur lewat ruleset Code Scanning terpisah.
