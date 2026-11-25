@@ -56,11 +56,12 @@ export function createStore(filename, today) {
   const claimQuery = 'SELECT claims.*, users.department FROM claims JOIN users ON users.id = claims.employeeId';
   const readClaim = db.prepare(`${claimQuery} WHERE claims.id = ?`);
   const visibleClaims = db.prepare(`
-    ${claimQuery}
+    SELECT claims.* FROM claims JOIN users ON users.id = claims.employeeId
     WHERE (@role = 'finance') OR (@role = 'employee' AND employeeId = @id)
       OR (@role = 'manager' AND users.department = @department)
     ORDER BY claims.id DESC LIMIT 100
   `);
+  const departmentFor = db.prepare('SELECT department FROM users WHERE id = ?');
   const applyApproval = db.transaction((id, actor, decision, at, nextStatus) => {
     const claim = readClaim.get(id);
     const status = nextStatus(claim, actor, decision);
@@ -72,7 +73,9 @@ export function createStore(filename, today) {
     close: () => db.close(),
     getUser: (id) => db.prepare('SELECT id, name, role, department FROM users WHERE id = ?').get(id),
     getClaim: (id) => readClaim.get(id),
-    listClaims: (actor) => visibleClaims.all(actor),
+    listClaims: (actor) => visibleClaims.all(actor).map((claim) => ({
+      ...claim, department: departmentFor.get(claim.employeeId).department,
+    })),
     createClaim: (input, employeeId) => readClaim.get(addClaim.run({ ...input, employeeId, status: 'pending' }).lastInsertRowid),
     approve: applyApproval,
     report: (month) => db.prepare(`
