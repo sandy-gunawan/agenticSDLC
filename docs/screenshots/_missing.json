@@ -1,0 +1,94 @@
+{
+  "S01": [
+    "S01-before.png",
+    "S01-after.png",
+    "S01-01-without-instructions.png",
+    "S01-02-instructions-file.png",
+    "S01-03-with-instructions.png"
+  ],
+  "S02": [
+    "S02-01-agent-plan.png",
+    "S02-02-files-changed.png",
+    "S02-03-tests-green.png"
+  ],
+  "S03": [
+    "S03-before.png",
+    "S03-after.png",
+    "S03-01-skill-loaded.png"
+  ],
+  "S04": [
+    "S04-02-assigned.png",
+    "S04-03-agent-session.png",
+    "S04-04-pr-summary.png",
+    "S04-05-pr-files.png",
+    "S04-06-pr-checks.png",
+    "S04-07-revision.png"
+  ],
+  "S05": [
+    "S05-before.png",
+    "S05-after.png",
+    "S05-01-issue.png",
+    "S05-02-pr-fix.png"
+  ],
+  "S06": [
+    "S06-01-ticket.png",
+    "S06-02-pr.png"
+  ],
+  "S07": [
+    "S07-before.png",
+    "S07-after.png",
+    "S07-01-pr-tests.png",
+    "S07-02-pr-migration.png"
+  ],
+  "S08": [
+    "S08-01-agent-picker.png",
+    "S08-02-bug-issue.png"
+  ],
+  "S09": [
+    "S09-before.png",
+    "S09-after.png",
+    "S09-01-three-sessions.png",
+    "S09-02-comments.png"
+  ],
+  "S10": [
+    "S10-before.png",
+    "S10-after.png",
+    "S10-01-assign.png",
+    "S10-02-pr-autofix.png"
+  ],
+  "S11": [
+    "S11-before.png",
+    "S11-after.png",
+    "S11-01-adr-pr.png",
+    "S11-02-impl-pr.png"
+  ],
+  "S12": [
+    "S12-before.png",
+    "S12-after.png",
+    "S12-01-run.png"
+  ],
+  "S13": [
+    "S13-before.png",
+    "S13-after.png",
+    "S13-01-triage.png"
+  ],
+  "S14": [
+    "S14-before.png",
+    "S14-after.png",
+    "S14-01-hooks-file.png",
+    "S14-02-usage.png",
+    "S14-03-gh-aw-permissions.png"
+  ],
+  "S15": [
+    "S15-after.png",
+    "S15-01-epic.png",
+    "S15-02-breakdown.png",
+    "S15-03-adr.png",
+    "S15-04-pr.png",
+    "S15-05-ci.png",
+    "S15-06-reviews.png",
+    "S15-07-merge.png",
+    "S15-08-docs.png",
+    "S15-09-audit.png"
+  ]
+}
