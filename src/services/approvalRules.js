@@ -17,5 +17,5 @@ export function nextApprovalStatus(claim, actor, decision) {
     throw new InputError('FINANCE_REQUIRED', 'Klaim menunggu persetujuan Finance.', 403);
   }
   if (decision === 'reject') return 'rejected';
-  return claim.status === 'pending' && claim.amount >= 1_000_000 ? 'pending_finance' : 'approved';
+  return claim.status === 'pending' && claim.amount > 1_000_000 ? 'pending_finance' : 'approved';
 }
