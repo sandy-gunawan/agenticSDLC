@@ -42,7 +42,8 @@
         "name": "S01-03-with-instructions.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S02",
@@ -89,7 +90,8 @@
         "name": "S02-03-tests-green.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S03",
@@ -126,7 +128,8 @@
         "name": "S03-01-skill-loaded.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S04",
@@ -177,7 +180,7 @@
       },
       {
         "name": "S04-04-pr-summary.png",
-        "present": false
+        "present": true
       },
       {
         "name": "S04-05-pr-files.png",
@@ -190,6 +193,16 @@
       {
         "name": "S04-07-revision.png",
         "present": false
+      }
+    ],
+    "evidence": [
+      {
+        "label": "Draft Copilot (belum ada perubahan)",
+        "href": "https://github.com/sandy-gunawan/agenticSDLC/pull/18"
+      },
+      {
+        "label": "Run coding agent berhenti sebelum kerja",
+        "href": "https://github.com/sandy-gunawan/agenticSDLC/actions/runs/45554824363"
       }
     ]
   },
@@ -233,7 +246,8 @@
         "name": "S05-02-pr-fix.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S06",
@@ -278,7 +292,8 @@
         "name": "S06-02-pr.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S07",
@@ -319,7 +334,8 @@
         "name": "S07-02-pr-migration.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S08",
@@ -338,7 +354,7 @@
     "narrative": {
       "story": "Coverage turun dari 70% ke 45% dalam setahun tanpa ada yang sadar. Saat insiden, Hendra baru tahu modul approval hampir tidak punya test.",
       "cost": "Setiap perubahan berisiko; tim takut refactor; \"sprint hardening\" darurat menghentikan delivery.",
-      "seed": "P8 — `approvalRules.js` coverage 0%, bug off-by-one di batas 1.000.000.",
+      "seed": "P8 — tidak ada test unit khusus untuk `approvalRules.js`, dengan bug off-by-one di batas 1.000.000. Test API mencakup sebagian aturan.",
       "solution": "Custom agent `qa-engineer` (read-only terhadap kode produksi): cari modul coverage rendah → tulis test dari acceptance criteria → test gagal → buka issue bug otomatis + PR test.",
       "advantage": "QA bergeser dari bottleneck ke oversight; bug ditemukan sebelum produksi."
     },
@@ -358,7 +374,17 @@
       },
       {
         "name": "S08-02-bug-issue.png",
-        "present": false
+        "present": true
+      }
+    ],
+    "evidence": [
+      {
+        "label": "Draft PR test lokal",
+        "href": "https://github.com/sandy-gunawan/agenticSDLC/pull/19"
+      },
+      {
+        "label": "Issue bug yang ditemukan",
+        "href": "https://github.com/sandy-gunawan/agenticSDLC/issues/20"
       }
     ]
   },
@@ -380,7 +406,7 @@
     "narrative": {
       "story": "QA 2 orang untuk 15 dev hanya sempat uji fungsional. Performa, security, compliance tidak tersentuh. Release menumpuk menunggu review.",
       "cost": "Defect non-fungsional (lambat, bocor data, crash saat beban) baru ketemu di produksi; QA burnout.",
-      "seed": "P9 — N+1 query di list klaim + `console.log` objek user (PII).",
+      "seed": "P9 — N+1 query di daftar klaim. Pembahasan PII memakai fixture, bukan data pengguna di log hidup.",
       "solution": "`security-reviewer`, `perf-reviewer`, `compliance-reviewer` (read-only, output komentar PR dengan severity) + Copilot code review built-in. Manusia baca ringkasan, bukan semua baris.",
       "advantage": "Setiap PR direview dari beberapa dimensi secara paralel; reviewer manusia dapat ringkasan temuan."
     },
@@ -388,7 +414,7 @@
     "shots": [
       {
         "name": "S09-before.png",
-        "present": false
+        "present": true
       },
       {
         "name": "S09-after.png",
@@ -401,6 +427,12 @@
       {
         "name": "S09-02-comments.png",
         "present": false
+      }
+    ],
+    "evidence": [
+      {
+        "label": "Draft stok review",
+        "href": "https://github.com/sandy-gunawan/agenticSDLC/pull/17"
       }
     ]
   },
@@ -443,6 +475,12 @@
         "name": "S10-02-pr-autofix.png",
         "present": false
       }
+    ],
+    "evidence": [
+      {
+        "label": "Run setup CodeQL; belum memindai",
+        "href": "https://github.com/sandy-gunawan/agenticSDLC/actions/runs/45554378322"
+      }
     ]
   },
   {
@@ -484,7 +522,8 @@
         "name": "S11-02-impl-pr.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S12",
@@ -520,7 +559,8 @@
         "name": "S12-01-run.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S13",
@@ -557,7 +597,8 @@
         "name": "S13-01-triage.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S14",
@@ -604,7 +645,8 @@
         "name": "S14-03-gh-aw-permissions.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   },
   {
     "id": "S15",
@@ -680,6 +722,7 @@
         "name": "S15-09-audit.png",
         "present": false
       }
-    ]
+    ],
+    "evidence": []
   }
 ]

@@ -7,6 +7,12 @@ const runbook = readFileSync(join(root, 'agentic-sdlc-workshop-docs', 'RUNBOOK.m
 const context = readFileSync(join(root, 'agentic-sdlc-workshop-docs', 'CONTEXT.md'), 'utf8').replaceAll('\r', '');
 export const screenshotDir = join(root, config.screenshotDir);
 export const url = `https://github.com/${repo}`;
+export const verifiedLinks = {
+  S04: [['Draft Copilot (belum ada perubahan)', 'pull/18'], ['Run coding agent berhenti sebelum kerja', 'actions/runs/45554824363']],
+  S08: [['Draft PR test lokal', 'pull/19'], ['Issue bug yang ditemukan', 'issues/20']],
+  S09: [['Draft stok review', 'pull/17']],
+  S10: [['Run setup CodeQL; belum memindai', 'actions/runs/45554378322']],
+};
 
 export function evidenceItems() {
   const found = new Set(readdirSync(screenshotDir, { withFileTypes: true })
@@ -17,6 +23,7 @@ export function evidenceItems() {
     const shots = [...new Set([`${id}-before.png`, `${id}-after.png`, ...runbook.matchAll(new RegExp(`${id}-[a-z0-9-]+\\.png`, 'g'))].map(String))]
       .map((name) => ({ name, present: found.has(name) }));
     return { id, ...value, narrative: { story: fields.Cerita, cost: fields.Kerugian, seed: fields.Ditanam, solution: fields.Solusi, advantage: fields.Advantage },
-      issue: `${url}/issues/${index + (index < 7 ? 1 : 2)}`, shots };
+      issue: `${url}/issues/${index + (index < 7 ? 1 : 2)}`, shots,
+      evidence: (verifiedLinks[id] ?? []).map(([label, path]) => ({ label, href: `${url}/${path}` })) };
   });
 }

@@ -78,7 +78,7 @@ Durasi = perkiraan demo live. Talk track = kalimat kunci yang diucapkan.
 4. Tampilkan dua hasil berdampingan (split editor). 📸 `S01-after.png` (alias langkah 3; `S01-before.png` = langkah 1).
 **Talk track:** "Prompt sama, orang sama, hasil beda—karena sekarang agent tahu cara tim kerja."
 **Verifikasi:** hasil kedua pakai logger, format error `{code,message}`, dan ada file test.
-**Reset:** `git checkout . && git clean -fd`.
+**Reset:** gunakan worktree latihan baru; simpan pekerjaan yang ingin dipertahankan.
 
 ### S02 — Agent Mode lintas file (8 mnt, tipe A + C)
 1. `npm run demo:before`. Buka form klaim. 📸 `S02-before.png` (form tanpa kategori).
@@ -86,7 +86,7 @@ Durasi = perkiraan demo live. Talk track = kalimat kunci yang diucapkan.
 3. Terminal test hijau. 📸 `S02-03-tests-green.png`.
 4. Refresh form. 📸 `S02-after.png` (dropdown kategori).
 **Talk track:** "Satu permintaan, enam file, test jalan sendiri. Saya hanya membaca rencananya."
-**Reset:** `git checkout . && git clean -fd`; restart `demo:before`.
+**Reset:** hentikan server demo dari terminalnya; `npm run reset` hanya membersihkan worktree latihan yang bersih.
 
 ### S03 — Skill new-endpoint (6 mnt, tipe C)
 1. Buka `src/routes/reports.js` (tanpa validasi/logging). 📸 `S03-before.png`.
@@ -128,17 +128,17 @@ Durasi = perkiraan demo live. Talk track = kalimat kunci yang diucapkan.
 **Talk track:** "Test dulu sebagai jaring pengaman, baru ganti mesinnya."
 
 ### S08 — Virtual QA (10 mnt, tipe B)
-1. `npm run coverage` → `approvalRules.js` 0%. 📸 `S08-before.png`.
+1. `npm run coverage` → catat nilai `approvalRules.js` yang terukur. 📸 `S08-before.png`.
 2. Agents tab → pilih custom agent **qa-engineer** → prompt: "Review coverage `src/services/approvalRules.js`, tulis test dari aturan di `docs/business-rules.md`, laporkan bug sebagai issue, jangan ubah kode produksi." 📸 `S08-01-agent-picker.png`.
-3. PR test + issue "Bug: batas approval 1.000.000 off-by-one" otomatis. 📸 `S08-02-bug-issue.png`.
-4. Coverage di PR ≈95%. 📸 `S08-after.png`.
+3. Buka PR yang hanya mengubah test dan catat issue batas persetujuan. 📸 `S08-02-bug-issue.png`.
+4. Catat coverage dan kegagalan test secara terpisah. 📸 `S08-after.png`.
 **Verifikasi:** PR hanya menyentuh `tests/`.
 
 ### S09 — Virtual Review Board (10 mnt, tipe B)
-**Pre-warm:** PR `demo/pr-stock` open (berisi N+1 + PII log). Atau pakai PR S04.
+**Pre-warm:** PR `demo/pr-stock` open (berisi pola N+1). Atau pakai PR S04 jika sudah ada perubahan.
 1. Tampilkan PR tanpa komentar reviewer. 📸 `S09-before.png`.
 2. Di PR, Reviewers → Copilot (code review built-in). Lalu di Agents tab jalankan `security-reviewer`, `perf-reviewer`, `compliance-reviewer` dengan prompt "Review PR #<n>, komentar di PR dengan severity." (tiga session paralel). 📸 `S09-01-three-sessions.png`.
-3. Komentar muncul: PII di log (security), N+1 (perf), tidak ada audit trail approval (compliance). 📸 `S09-02-comments.png`.
+3. Periksa komentar substantif: temuan perlu lokasi di kode dan mitigasi. Pesan kegagalan runner bukan hasil review. 📸 `S09-02-comments.png`.
 4. Ringkasan untuk Tech Lead (komentar summary). 📸 `S09-after.png`.
 **Talk track:** "Tiga spesialis mereview bersamaan; Bima membaca ringkasannya, bukan 400 baris."
 

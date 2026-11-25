@@ -124,19 +124,19 @@ Format tiap skenario: **Role · Cerita (pain point) · Kerugian · Masalah yang 
 - **Role:** Sari (QA), Hendra
 - **Cerita:** Coverage turun dari 70% ke 45% dalam setahun tanpa ada yang sadar. Saat insiden, Hendra baru tahu modul approval hampir tidak punya test.
 - **Kerugian:** Setiap perubahan berisiko; tim takut refactor; "sprint hardening" darurat menghentikan delivery.
-- **Ditanam:** P8 — `approvalRules.js` coverage 0%, bug off-by-one di batas 1.000.000.
+- **Ditanam:** P8 — tidak ada test unit khusus untuk `approvalRules.js`, dengan bug off-by-one di batas 1.000.000. Test API mencakup sebagian aturan.
 - **Solusi:** Custom agent `qa-engineer` (read-only terhadap kode produksi): cari modul coverage rendah → tulis test dari acceptance criteria → test gagal → buka issue bug otomatis + PR test.
 - **Advantage:** QA bergeser dari bottleneck ke oversight; bug ditemukan sebelum produksi.
-- **Bukti:** coverage 0% → ~95%; issue "Bug: limit approval off-by-one" dibuat agent.
+- **Bukti:** laporan coverage lokal sebelum/sesudah dan issue yang memuat expected/actual. Angka aktual ada di `docs/metrics.json`.
 
 #### S09 — Virtual Review Board (3 reviewer agent)
 - **Role:** Sari, Dimas (AppSec), Bima
 - **Cerita:** QA 2 orang untuk 15 dev hanya sempat uji fungsional. Performa, security, compliance tidak tersentuh. Release menumpuk menunggu review.
 - **Kerugian:** Defect non-fungsional (lambat, bocor data, crash saat beban) baru ketemu di produksi; QA burnout.
-- **Ditanam:** P9 — N+1 query di list klaim + `console.log` objek user (PII).
+- **Ditanam:** P9 — N+1 query di daftar klaim. Pembahasan PII memakai fixture, bukan data pengguna di log hidup.
 - **Solusi:** `security-reviewer`, `perf-reviewer`, `compliance-reviewer` (read-only, output komentar PR dengan severity) + Copilot code review built-in. Manusia baca ringkasan, bukan semua baris.
 - **Advantage:** Setiap PR direview dari beberapa dimensi secara paralel; reviewer manusia dapat ringkasan temuan.
-- **Bukti:** komentar 3 agent di PR S04 (atau PR stok): PII di log, N+1, tidak ada audit trail approval.
+- **Bukti:** laporan tiap reviewer di PR. Verifikasi N+1 dan catat kontrol log serta audit trail yang memang ada; jangan menulis temuan tanpa bukti.
 - **Dependensi:** butuh PR yang sudah ada (S04 atau branch `demo/pr-stock`).
 
 #### S10 — Virtual Security team: CodeQL autofix

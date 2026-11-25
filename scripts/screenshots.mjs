@@ -101,7 +101,9 @@ function report() {
     'Bukti lokal S02, S04, dan S06 membandingkan baseline latihan dengan branch aplikasi bersih, bukan PR Copilot. S04 setelah menunjukkan penolakan tanggal masa depan; baseline belum mempunyai input tanggal. Bukti S08 berasal dari laporan Vitest V8 di baseline dan `demo/s08-qa-observation`; test di batas satu juta gagal sesuai target.',
     '', '| Skenario | Before | After | Bukti langkah |', '|---|---|---|---|',
     ...items.map(({ id, title, shots, issue }) => `| [${id} — ${title}](${issue}) | ${row(shots[0])} | ${row(shots[1])} | ${shots.slice(2).filter((shot) => shot.present).map(row).join(', ') || 'Belum di-capture'} |`),
-    '', 'Daftar nama bukti yang masih kurang ada di [`screenshots/_missing.json`](screenshots/_missing.json).', '',
+    '', '## Artefak GitHub yang diverifikasi', '',
+    ...items.flatMap(({ id, evidence }) => evidence.map(({ label, href }) => `- ${id}: [${label}](${href})`)),
+    '', 'Draft, judul issue, dan run yang tidak mulai bukan bukti perbaikan. Daftar gambar yang masih kurang ada di [`screenshots/_missing.json`](screenshots/_missing.json).', '',
   ].join('\n'));
 }
 

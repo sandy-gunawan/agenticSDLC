@@ -10,7 +10,7 @@
 <div class="chips"><span class="chip">Level 3</span><span class="chip">Sari</span><span class="chip">Dimas</span><span class="chip">Bima</span></div><p class="caption">Durasi 10 menit · estimasi latihan</p>
 <fieldset class="audience" hidden><legend>Sudut pandang</legend><label><input type="radio" name="audience" value="all" checked> Semua</label><label><input type="radio" name="audience" value="business"> Bisnis</label><label><input type="radio" name="audience" value="technical"> Teknis</label></fieldset>
 <section data-audience="business"><h2>Cerita tim</h2><p>QA 2 orang untuk 15 dev hanya sempat uji fungsional. Performa, security, compliance tidak tersentuh. Release menumpuk menunggu review.</p><aside class="callout"><strong>Kerugian</strong><p>Defect non-fungsional (lambat, bocor data, crash saat beban) baru ketemu di produksi; QA burnout.</p><p class="caption">Angka dalam cerita adalah ilustrasi, bukan hasil dry-run.</p></aside></section>
-<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P9 — N+1 query di list klaim + <code>console.log</code> objek user (PII).</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/docs/fixtures/S09-review-notes.md"><code>docs/fixtures/S09-review-notes.md</code></a></p><p>PR tanpa sudut pandang spesialis → Ringkasan risiko untuk Tech Lead</p></details></section>
+<section data-audience="technical"><h2>Yang disiapkan di repo</h2><p>P9 — N+1 query di daftar klaim. Pembahasan PII memakai fixture, bukan data pengguna di log hidup.</p><details><summary>Lihat file dan kontrak</summary><p><a href="https://github.com/sandy-gunawan/agenticSDLC/blob/main/docs/fixtures/S09-review-notes.md"><code>docs/fixtures/S09-review-notes.md</code></a></p><p>PR tanpa sudut pandang spesialis → Ringkasan risiko untuk Tech Lead</p></details></section>
 <section><h2>Pilihan solusi</h2><p><code>security-reviewer</code>, <code>perf-reviewer</code>, <code>compliance-reviewer</code> (read-only, output komentar PR dengan severity) + Copilot code review built-in. Manusia baca ringkasan, bukan semua baris.</p>
 <figure class="diagram">
 <img src="../assets/diagrams/D7.svg" alt="Tiga review berjalan paralel; rincian tersedia pada uraian diagram." width="762" height="324" loading="lazy">
@@ -23,7 +23,7 @@
 <section><h2>Before / After</h2><div class="grid evidence-grid" id="compare-text">
 <figure class="evidence">
 <figcaption><span class="eyebrow">Before</span> PR tanpa sudut pandang spesialis</figcaption>
-<p class="pending">Belum di-capture · <code>S09-before.png</code></p>
+<a class="zoom" href="../assets/screenshots/S09-before.png"><img src="../assets/screenshots/S09-before.png" alt="Before: PR tanpa sudut pandang spesialis" width="429" height="43" loading="lazy"></a>
 </figure><figure class="evidence">
 <figcaption><span class="eyebrow">After</span> Ringkasan risiko untuk Tech Lead</figcaption>
 <p class="pending">Belum di-capture · <code>S09-after.png</code></p>
@@ -33,6 +33,7 @@
 </section>
 <section data-audience="business"><h2>Manfaat untuk tim</h2><ul><li>Setiap PR direview dari beberapa dimensi secara paralel; reviewer manusia dapat ringkasan temuan.</li></ul></section>
 <section><h2>Bukti yang bisa diperiksa</h2><ul><li><a href="https://github.com/sandy-gunawan/agenticSDLC/issues/10">Issue GitHub · S09</a></li>
+<li><a href="https://github.com/sandy-gunawan/agenticSDLC/pull/17">Draft stok review</a></li>
 <li><code>S09-01-three-sessions.png</code> · belum di-capture</li><li><code>S09-02-comments.png</code> · belum di-capture</li></ul>
 <p class="caption">Screenshot dan metrik yang tidak tersedia tidak dianggap sebagai hasil live.</p></section>
 <section data-audience="technical"><h2>Ulangi latihan</h2><p>Jalankan dari root repo latihan. Reset hanya menyentuh worktree lokal yang bersih.</p><div class="command"><pre><code>npm run reset</code></pre><button type="button" class="copy" hidden>Salin</button></div></section>
