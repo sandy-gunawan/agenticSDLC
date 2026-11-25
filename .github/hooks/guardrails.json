@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [{ "type": "command", "command": "node scripts/hooks/policy.mjs session", "cwd": ".", "timeoutSec": 5 }],
+    "preToolUse": [{ "type": "command", "bash": "bash scripts/hooks/guard.sh", "powershell": "& ./scripts/hooks/guard.ps1", "cwd": ".", "timeoutSec": 5 }],
+    "postToolUse": [{ "type": "command", "bash": "bash scripts/hooks/audit.sh", "powershell": "& ./scripts/hooks/audit.ps1", "cwd": ".", "timeoutSec": 5 }]
+  }
+}
