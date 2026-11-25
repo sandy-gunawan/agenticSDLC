@@ -37,18 +37,6 @@ export function validateClaim(input, today) {
   if (!Number.isSafeInteger(input.amount) || input.amount <= 0 || input.amount > 50_000_000) {
     throw new InputError('AMOUNT_INVALID', 'Jumlah harus berupa rupiah bulat antara 1 dan 50.000.000.');
   }
-  const day = input.claimDate;
-  const parsed = typeof day === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(day)
-    ? new Date(`${day}T00:00:00Z`) : new Date(NaN);
-  if (Number.isNaN(parsed.getTime()) || todayUtc(parsed) !== day) {
-    throw new InputError('CLAIM_DATE_INVALID', 'Isi tanggal klaim yang valid.');
-  }
-  if (day > today) {
-    throw new InputError('CLAIM_DATE_FUTURE', 'Tanggal klaim tidak boleh di masa depan.');
-  }
-  if (day < dateOffset(today, -90)) {
-    throw new InputError('CLAIM_DATE_OLD', 'Tanggal klaim tidak boleh lebih dari 90 hari yang lalu.');
-  }
   const notes = input.notes ?? '';
   const attachment = input.attachment ?? '';
   if (typeof notes !== 'string' || notes.length > 500) {
@@ -57,7 +45,7 @@ export function validateClaim(input, today) {
   if (typeof attachment !== 'string' || attachment.length > 120 || /[/\\]/.test(attachment) || attachment === '.' || attachment === '..') {
     throw new InputError('ATTACHMENT_INVALID', 'Isi nama file saja, bukan alamat file.');
   }
-  return { title, category: 'Other', amount: input.amount, claimDate: day, notes: notes.trim(), attachment: attachment.trim() };
+  return { title, category: 'Other', amount: input.amount, claimDate: today, notes: notes.trim(), attachment: attachment.trim() };
 }
 
 export function reportMonth(value, today) {

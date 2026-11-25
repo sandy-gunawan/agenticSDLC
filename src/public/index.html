@@ -28,7 +28,6 @@
         <form id="claim-form">
           <label for="title">Judul klaim</label><input id="title" name="title" required maxlength="100" placeholder="Contoh: Taksi bandara">
           <label for="amount">Jumlah (IDR)</label><input id="amount" name="amount" type="number" min="1" max="50000000" step="1" required>
-          <label for="claimDate">Tanggal klaim (UTC)</label><input id="claimDate" name="claimDate" type="date" required>
           <label for="attachment">Nama lampiran (opsional)</label><input id="attachment" name="attachment" maxlength="120" placeholder="kuitansi.pdf">
           <label for="notes">Catatan (opsional)</label><textarea id="notes" name="notes" maxlength="500" rows="2"></textarea>
           <button type="submit" id="submit" disabled title="Kirim klaim untuk diperiksa manager">Ajukan Klaim</button>

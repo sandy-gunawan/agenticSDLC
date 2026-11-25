@@ -96,7 +96,6 @@ form?.addEventListener('submit', (event) => {
     input.amount = Number(input.amount);
     await api('/claims', input);
     form.reset();
-    form.elements.claimDate.value = today;
     await refresh();
     message('Klaim berhasil diajukan.', 'toast');
   });
@@ -106,7 +105,6 @@ month?.addEventListener('change', () => perform(refresh));
 perform(async () => {
   if (form) {
     ({ today } = await api('/session'));
-    form.elements.claimDate.value = today;
   }
   await refresh();
 });

@@ -46,19 +46,12 @@ describe('Expense Claim API', () => {
     await asUser(api.get('/claims/2')).expect(404);
   });
 
-  it('accepts a claim dated today', async () => {
+  it('records the UTC day when a claim is filed', async () => {
     const { body } = await submit({ title: '  Taksi bandara  ' }).expect(201);
     expect(body.claim).toMatchObject({ ...input, status: 'pending', employeeId: 1 });
   });
 
-  it('rejects future claims', async () => {
-    const { body } = await submit({ claimDate: '2026-01-16' }).expect(400);
-    expect(body.code).toBe('CLAIM_DATE_FUTURE');
-  });
-
   it.each([
-    [{ claimDate: '2026-02-31' }, 'CLAIM_DATE_INVALID'],
-    [{ claimDate: '2025-10-16' }, 'CLAIM_DATE_OLD'],
     [{ amount: 0 }, 'AMOUNT_INVALID'],
     [{ amount: 50_000_001 }, 'AMOUNT_INVALID'],
     [{ attachment: 'folder/receipt.pdf' }, 'ATTACHMENT_INVALID'],
