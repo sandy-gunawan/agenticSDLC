@@ -73,9 +73,13 @@ export function createStore(filename, today) {
     close: () => db.close(),
     getUser: (id) => db.prepare('SELECT id, name, role, department FROM users WHERE id = ?').get(id),
     getClaim: (id) => readClaim.get(id),
-    listClaims: (actor) => visibleClaims.all(actor).map((claim) => ({
-      ...claim, department: departmentFor.get(claim.employeeId).department,
-    })),
+    listClaims: (actor) => {
+      const claims = visibleClaims.all(actor);
+      return claims.map((claim) => {
+        const { department } = departmentFor.get(claim.employeeId);
+        return { ...claim, department };
+      });
+    },
     createClaim: (input, employeeId) => readClaim.get(addClaim.run({ ...input, employeeId, status: 'pending' }).lastInsertRowid),
     approve: applyApproval,
     report: (month) => db.prepare(`
