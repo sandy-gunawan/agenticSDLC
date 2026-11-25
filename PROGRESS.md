@@ -7,8 +7,8 @@
 | 2 | Selesai lokal | Commit `seed(P1)`–`seed(P15)`. P10 dan P14 memakai fixture aman; P9 tidak mencatat PII. Jakarta lulus; LA hanya gagal di test P5 sesuai rencana. |
 | 3 | Terbit | 16 issue dan aturan bisnis; S07 dibagi dua. S13 sengaja tanpa label. |
 | 4 | Lokal | Custom instructions, tujuh agent, skill endpoint, hook lintas platform, dan setup Copilot. Dropdown cloud perlu sesi GitHub. |
-| 5 | Belum | Agentic Workflows dan uji GitHub. |
-| 6 | Belum | Tooling demo, screenshot, metrics, dan reset. |
+| 5 | Compile lulus | Tiga Agentic Workflows dikompilasi tanpa warning dengan gh-aw 1.2.2. Run AI belum diverifikasi; opt-in `WORKSHOP_AI_ENABLED` dan secret milik pemilik. |
+| 6 | Lokal | Demo, screenshot, metrics, reset non-destruktif, dan task VS Code tersedia. |
 | 7 | Belum | Baseline, branch dan pengaturan GitHub, varian bare. |
 | 8 | Belum | Dry-run dan bukti. |
 | 9 | Belum | Situs offline dan GitHub Pages. |

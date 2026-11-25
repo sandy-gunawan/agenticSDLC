@@ -1,0 +1,7 @@
+{
+  "S04": { "runs": [] },
+  "S08": { "approvalCoverage": { "before": 75, "after": null, "unit": "% baris", "source": "Vitest V8 · Asia/Jakarta · pengujian lokal pada baseline latihan" } },
+  "S10": { "alertCounts": { "before": null, "after": null } },
+  "S14": { "runs": [] },
+  "S15": { "runs": [] }
+}

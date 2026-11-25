@@ -1,0 +1,10 @@
+{
+  "owner": "sandy-gunawan",
+  "repo": "agenticSDLC",
+  "baseBranch": "v0-baseline",
+  "beforePort": 3000,
+  "afterPort": 3001,
+  "screenshotDir": "docs/screenshots",
+  "viewport": { "width": 1440, "height": 900 },
+  "darkMode": false
+}

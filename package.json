@@ -9,7 +9,17 @@
     "lint": "eslint .",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "demo:before": "node scripts/demo.mjs before",
+    "demo:after": "node scripts/demo.mjs after",
+    "demo:compare": "node scripts/demo.mjs compare",
+    "demo:stop": "node scripts/demo.mjs stop",
+    "shots": "node scripts/screenshots.mjs",
+    "shots:all": "node scripts/screenshots.mjs all",
+    "shots:login": "node scripts/screenshots.mjs login",
+    "metrics": "node scripts/metrics.mjs",
+    "reset": "node scripts/demo.mjs reset",
+    "docs:build": "node scripts/build-site.mjs"
   },
   "dependencies": {
     "better-sqlite3": "12.10.0",

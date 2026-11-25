@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Demo: before", "type": "npm", "script": "demo:before", "problemMatcher": [] },
+    { "label": "Demo: after", "type": "process", "command": "node", "args": ["scripts/demo.mjs", "after", "${input:ref}"], "problemMatcher": [] },
+    { "label": "Demo: compare", "type": "process", "command": "node", "args": ["scripts/demo.mjs", "compare", "${input:ref}"], "problemMatcher": [] },
+    { "label": "Shots: scenario", "type": "process", "command": "node", "args": ["scripts/screenshots.mjs", "${input:scenario}"], "problemMatcher": [] },
+    { "label": "Shots: all", "type": "npm", "script": "shots:all", "problemMatcher": [] },
+    { "label": "Reset", "type": "npm", "script": "reset", "problemMatcher": [] }
+  ],
+  "inputs": [
+    { "id": "ref", "type": "promptString", "description": "Ref Git untuk after", "default": "workshop/clean-baseline" },
+    { "id": "scenario", "type": "promptString", "description": "Kode skenario", "default": "S04" }
+  ]
+}
