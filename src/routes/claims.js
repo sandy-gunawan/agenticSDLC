@@ -7,7 +7,7 @@ export function claimsRouter(store, now) {
   router.get('/', (req, res) => {
     const claims = store.listClaims(req.actor);
     auditLog('info', 'claims.list', { count: claims.length });
-    res.json({ claims });
+    res.json({ claims, count: claims.length });
   });
   router.get('/:id', (req, res) => {
     const claim = store.getClaim(claimId(req.params.id));
