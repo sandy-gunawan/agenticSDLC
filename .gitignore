@@ -4,8 +4,7 @@
 .auth/
 .worktrees/
 audit/
-data/
-!site/assets/data/
+/data/
 coverage/
 node_modules/
 playwright-report/
