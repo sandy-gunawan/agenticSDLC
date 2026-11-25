@@ -3,7 +3,7 @@ import request from 'supertest';
 import { createApp } from '../../src/server.js';
 
 const now = () => new Date('2026-01-15T00:15:00Z');
-const input = { title: 'Taksi bandara', amount: 250_000, category: 'Travel', claimDate: '2026-01-15' };
+const input = { title: 'Taksi bandara', amount: 250_000, claimDate: '2026-01-15' };
 
 describe('Expense Claim API', () => {
   let app;
@@ -61,7 +61,6 @@ describe('Expense Claim API', () => {
     [{ claimDate: '2025-10-16' }, 'CLAIM_DATE_OLD'],
     [{ amount: 0 }, 'AMOUNT_INVALID'],
     [{ amount: 50_000_001 }, 'AMOUNT_INVALID'],
-    [{ category: 'Unknown' }, 'CATEGORY_INVALID'],
     [{ attachment: 'folder/receipt.pdf' }, 'ATTACHMENT_INVALID'],
     [{ title: '  ' }, 'TITLE_INVALID'],
   ])('validates %o', async (changes, code) => {

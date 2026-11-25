@@ -3,7 +3,6 @@ import { expect, test } from '@playwright/test';
 test('employee submits a fictional claim and sees it in the ledger', async ({ page }) => {
   await page.goto('/');
   await page.getByLabel('Judul klaim').fill('Taksi bandara');
-  await page.getByLabel('Kategori').selectOption('Travel');
   await page.getByLabel('Jumlah (IDR)').fill('250000');
   await page.locator('#submit').click();
   await expect(page.getByRole('status')).toHaveText('Klaim berhasil diajukan.');

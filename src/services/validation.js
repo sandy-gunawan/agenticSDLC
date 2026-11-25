@@ -34,9 +34,6 @@ export function validateClaim(input, today) {
   if (!title || title.length > 100) {
     throw new InputError('TITLE_INVALID', 'Isi judul klaim (maksimal 100 karakter).');
   }
-  if (!categories.includes(input.category)) {
-    throw new InputError('CATEGORY_INVALID', 'Pilih kategori yang tersedia.');
-  }
   if (!Number.isSafeInteger(input.amount) || input.amount <= 0 || input.amount > 50_000_000) {
     throw new InputError('AMOUNT_INVALID', 'Jumlah harus berupa rupiah bulat antara 1 dan 50.000.000.');
   }
@@ -60,7 +57,7 @@ export function validateClaim(input, today) {
   if (typeof attachment !== 'string' || attachment.length > 120 || /[/\\]/.test(attachment) || attachment === '.' || attachment === '..') {
     throw new InputError('ATTACHMENT_INVALID', 'Isi nama file saja, bukan alamat file.');
   }
-  return { title, category: input.category, amount: input.amount, claimDate: day, notes: notes.trim(), attachment: attachment.trim() };
+  return { title, category: 'Other', amount: input.amount, claimDate: day, notes: notes.trim(), attachment: attachment.trim() };
 }
 
 export function reportMonth(value, today) {
